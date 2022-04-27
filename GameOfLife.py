@@ -17,14 +17,14 @@ def XYBoard(x: int, y: int, rand: bool = False) -> list:
     return gameBoard
 
 
-def CleanPrint(theList):
+def CleanPrint(theList: list):
     """Print cleanly"""
     for i in range(0, len(theList)):
         print(theList[i])
     print("")
 
 
-def NextIteration(board) -> list:
+def NextIteration(board: list) -> list:
     """Calculate the next generation based on an earlier generation"""
     nextBoard = []
     x = len(board[0])

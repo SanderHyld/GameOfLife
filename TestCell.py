@@ -1,4 +1,4 @@
-def TestNeighbours(x, y, prevBoard) -> bool:
+def TestNeighbours(x: int, y: int, prevBoard: list) -> bool:
     """Checks neighbours at a specic coordinate and returns a bool based on the GoL rules"""
 
     neighbour = 0
