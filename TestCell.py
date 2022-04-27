@@ -11,8 +11,10 @@ def TestNeighbours(xx, yy, prevBoard) -> bool:
         for j in range(-1, 2):
             if (i != 0 or j != 0):
                 try:
-                    if prevBoard[yy + j][xx + i]:
-                        neighbour += 1
+                    if (yy+j != -1):
+                        if (xx+i != -1):
+                            if prevBoard[yy + j][xx + i]:
+                                neighbour += 1
                 except:
                     pass
 
