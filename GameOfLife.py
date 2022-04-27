@@ -2,8 +2,9 @@ from TestCell import TestNeighbours
 import random
 # Game of life
 
+
 def XYBoard(x: int, y: int, rand: bool = False) -> list:
-    # Create board x*y matrix
+    """Create board with x and y dimensions"""
     gameBoard = []
     for Y in range(0, y):
         xDirection = []
@@ -17,32 +18,31 @@ def XYBoard(x: int, y: int, rand: bool = False) -> list:
 
 
 def CleanPrint(theList):
-    # Debugging function, delete later
+    """Print cleanly"""
     for i in range(0, len(theList)):
         print(theList[i])
+    print("")
 
 
-# test for neighbours and create next iteration / I'll do this in two functions
 def NextIteration(board) -> list:
+    """Calculate the next generation based on an earlier generation"""
     nextBoard = []
-    x = len(board[0]) - 1
-    y = len(board) - 1
-    for Y in range(0, x):
+    x = len(board[0])
+    y = len(board)
+    for Y in range(0, y):
         nextBoard.append([])
-        for X in range(0, y):
+        for X in range(0, x):
             nextBoard[Y].append(TestNeighbours(X, Y, board))
     return nextBoard
 
 
-Board = XYBoard(5, 5, True)
-CleanPrint(Board)
-
-Board = NextIteration(Board)
-CleanPrint(Board)
-
-Board = NextIteration(Board)
-CleanPrint(Board)
-
+def DoIterations(iteration:int = 10, x: int = 5, y: int = 5):
+    """Print out iterations, with x and y"""
+    board = XYBoard(x,y,True)
+    CleanPrint(board)
+    for i in range(0,iteration):
+        board = NextIteration(board)
+        CleanPrint(board)
 
 
-# plot the result
+DoIterations()
