@@ -1,9 +1,9 @@
 # GameOfLife
 Conway's game of life in Python
 
-##Requisites
+## Requisites
 numpy and matplotlib
 
-##Use
+## Use
 GameOfLife.py animates the game of life board
 Function DoIterations takes arguments x and y, which can be adjusted as desired
