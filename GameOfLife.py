@@ -1,5 +1,7 @@
 from TestCell import TestNeighbours
 import random
+import matplotlib.animation as animation
+import matplotlib.pyplot as plt
 # Game of life
 
 
@@ -24,7 +26,7 @@ def CleanPrint(theList: list):
     print("")
 
 
-def NextIteration(board: list) -> list:
+def NextIteration(n, board: list, img) -> list:
     """Calculate the next generation based on an earlier generation"""
     nextBoard = []
     x = len(board[0])
@@ -33,16 +35,19 @@ def NextIteration(board: list) -> list:
         nextBoard.append([])
         for X in range(0, x):
             nextBoard[Y].append(TestNeighbours(X, Y, board))
-    return nextBoard
+    img.set_data(nextBoard)
+    board[:] = nextBoard[:]
+    return img
 
 
-def DoIterations(iteration:int = 10, x: int = 5, y: int = 5):
+def DoIterations(x: int = 5, y: int = 5):
     """Print out iterations, with x and y"""
     board = XYBoard(x,y,True)
-    CleanPrint(board)
-    for i in range(0,iteration):
-        board = NextIteration(board)
-        CleanPrint(board)
+
+    fig, ax = plt.subplots()
+    img = ax.imshow(board, interpolation='nearest')
+    ani = animation.FuncAnimation(fig, NextIteration, fargs=(board, img))
+    plt.show()
 
 
-DoIterations()
+DoIterations(100, 100)
